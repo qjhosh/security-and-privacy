@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>Secure Registration</header>
+    <section class="container">
+        <h3>Register New Account</h3>
+
+        {% if message %}
+            <p style="color: red;">{{ message }}</p>
+        {% endif %}
+
+        <form method="POST" action="/register">
+            <input type="text" name="new_account" placeholder="New Account" required>
+            <input type="password" name="new_password" placeholder="New Password" required>
+            <button type="submit">Register</button>
+        </form>
+    </section>
+</body>
+</html>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>SecureApp - 注册账户</title>-->
+<!--</head>-->
+<!--<body style="text-align:center; font-family: sans-serif;">-->
+<!--    <h2>注册新账户</h2>-->
+
+<!--    {% if message %}-->
+<!--        <p style="color: red;">{{ message }}</p>-->
+<!--    {% endif %}-->
+
+<!--    <form method="POST" action="/register">-->
+<!--        <input type="text" name="new_account" placeholder="用户名" required><br><br>-->
+<!--        <input type="password" name="new_password" placeholder="密码" required><br><br>-->
+<!--        <input type="email" name="new_email" placeholder="邮箱" required><br><br>-->
+<!--        <button type="submit">注册</button>-->
+<!--    </form>-->
+
+<!--    <p><a href="/">返回登录</a></p>-->
+<!--</body>-->
+<!--</html>-->

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+    <header>Secure Registration</header>
+    <section class="container">
+        <h3>Register a New Account</h3>
+
+        <!-- ✅ 这里显示 `message` 提示 -->
+        {% if message %}
+        <p style="color: red;">{{ message }}</p>
+        {% endif %}
+
+        <form method="POST" action="/register">
+            <input type="text" name="new_account" placeholder="New Account" required>
+            <input type="password" name="new_password" placeholder="New Password" required>
+            <!-- ✅ 新增邮箱输入 -->
+            <input type="email" name="new_email" placeholder="Enter Your Email" required>
+            
+            <!-- ✅ reCAPTCHA v2 checkbox -->
+            <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+
+            <button type="submit">Register</button>
+        </form>
+        {% if message %}
+        <p style="color: red;">{{ message }}</p>
+        {% endif %}
+        <p><a href="/">Back to Login</a></p>
+    </section>
+</body>
+
+</html>

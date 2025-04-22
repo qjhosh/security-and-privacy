@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify OTP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <header>Secure OTP Verification</header>
+    <section class="container">
+        <h3>Enter OTP Code</h3>
+        <input type="email" id="email" value="{{ email }}" readonly>
+        <button id="send-otp-btn">Send OTP</button>
+        <form method="POST" action="/otp_verification">
+            <input type="text" name="otp" placeholder="Enter OTP Code" required>
+            <button type="submit">Verify</button>
+        </form>
+        {% if message %}
+        <p style="color: red;">{{ message }}</p>
+        {% endif %}
+        <p><a href="{{ url_for('otp_totp') }}">🔁 Use Google Authenticator instead</a></p>
+        <p><a href="/">Back to Login</a></p>
+    </section>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Authenticator Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>Secure Login - Google Authenticator</header>
+
+    <section class="container">
+        <h3>Enter TOTP Code</h3>
+
+        {% if message %}
+        <p style="color: red;">{{ message }}</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('otp_totp') }}">
+            <input type="text" name="totp" placeholder="6-digit code from Authenticator" required>
+            <button type="submit">Verify</button>
+        </form>
+
+        <p style="margin-top: 20px;">
+            🔁 Prefer Email OTP?
+            <a href="{{ url_for('otp_verification') }}">Click here to switch</a>
+        </p>
+    </section>
+</body>
+</html>

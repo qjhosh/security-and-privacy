@@ -1,0 +1,57 @@
+/* 全局页面样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #0044cc;
+    padding: 20px;
+    color: white;
+    font-size: 24px;
+}
+
+/* 容器样式 */
+.container {
+    background: white;
+    padding: 20px;
+    margin: 50px auto;
+    width: 350px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* 输入框样式 */
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* 按钮样式 */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    background-color: #0044cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0033aa;
+}
+
+/* reCAPTCHA 居中 */
+.g-recaptcha {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+}

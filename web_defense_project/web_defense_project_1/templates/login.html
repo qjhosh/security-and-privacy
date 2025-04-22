@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <header>Secure Login System</header>
+    <section class="container">
+        <h3>Login to Your Account</h3>
+
+        <!-- ✅ 这里显示 `message` 提示 -->
+        {% if message %}
+            <p style="color: red;">{{ message }}</p>
+        {% endif %}
+
+        <form method="POST" action="/login">
+            <input type="text" name="account" placeholder="Enter Account Number" required>
+            <input type="password" name="password" placeholder="Enter Password" required>
+            <label>CAPTCHA: {{ captcha_question }}</label>
+            <input type="text" name="captcha" required>
+            <button type="submit">Login</button>
+        </form>
+        <p><a href="/register">Register</a></p>
+    </section>
+</body>
+</html>

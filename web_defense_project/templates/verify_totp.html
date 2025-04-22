@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Verify TOTP - Google Authenticator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>🔐 Verify with Google Authenticator</header>
+
+    <section class="container">
+        <h3>Step 1: Scan this QR Code</h3>
+        <img src="data:image/png;base64,{{ qr }}" width="200" alt="QR Code"><br>
+
+        <p>Or manually enter this secret key into your app:</p>
+        <code>{{ otp_secret }}</code>
+
+        <h3>Step 2: Enter the 6-digit code from your Authenticator app</h3>
+        <form method="POST" action="{{ url_for('verify_totp') }}">
+            <input type="text" name="totp" placeholder="Enter 6-digit TOTP" required>
+            <button type="submit">✅ Verify & Complete Registration</button>
+        </form>
+
+        {% if message %}
+        <p style="color: red;">{{ message }}</p>
+        {% endif %}
+
+        <p><a href="{{ url_for('register') }}">← Go back to registration</a></p>
+    </section>
+</body>
+</html>
