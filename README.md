@@ -58,7 +58,7 @@ After a victim submits credentials, they are saved to local log files. You can i
 cat captured_logins.txt
 cat captured_registrations.txt
 ```
-##  DDoS Attack(`phingattack/`)
+##  DDoS Attack(`hping3_dos.sh`)
 Using Kali Linux to run and monitor the DDoS attack:
 ### Step 1: Run Wireshark
 Select eth0 interface and add the filter condition of ip.dst==destination address in the filter.
@@ -66,4 +66,38 @@ Select eth0 interface and add the filter condition of ip.dst==destination addres
 change the destination address to the ip address to be attacked.
 ```bash
 hping3 hping3_dos.sh
+```
+
+# ELK-based IP Detection and Blocking（`elk/`）
+### Step 1: Start the ELK Stack
+Make sure you’re in the project directory:
+```bash
+docker-compose up -d
+```
+### Step 2: Configure Logstash
+Ensure logstash/logstash.conf is properly set to monitor logs from:
+path => "/logdata/netstat.log"
+### Step 3: Run netstat_log.ps1 on Windows Host
+```bash
+powershell -ExecutionPolicy Bypass -File .\netstat_log.ps1
+```
+To automate it:
+
+Open Task Scheduler
+
+Create a task to run netstat_log.ps1 every 1 minute
+### Step 4: Run the IP Blocker Script
+```bash
+python broker/block_ips.py
+```
+### Validate
+Open Kibana at http://localhost:5601
+
+Use Discover to explore logs
+
+Use Dashboard to visualize attacks
+
+Verify IP blocking
+```bash
+netsh advfirewall firewall show rule name=all 
 ```
