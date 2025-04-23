@@ -14,8 +14,26 @@
 
 - `hping3_dos.sh`  
   Shell script for launching DoS attacks using `hping3`.
-
+# 🧰 Prerequisites
+- Docker Desktop (Windows 11)
+- Tested OS: Kali Linux (Debian-based)
+- Python Version: 3.7+
+ Python Dependencies:
+Create and activate a virtual environment
+```bash
+python3 -m venv passgan37-env
+source passgan37-env/bin/activate
+```
+2. Install Flask and dependencies:
+```bash
+pip install flask flask-session flask-mail pyotp qrcode requests
+```
 # 🛠️ How to Run
+
+## Webpage(`web_defense_project/`)
+### Step 1: Run `app.py`
+### Step 2: Visit the Webpage
+Accessible at: http://localhost:5000
 
 ## Brute Force Attack(`Bruteforce/`)
 
@@ -87,6 +105,7 @@ Open Task Scheduler
 
 Create a task to run netstat_log.ps1 every 1 minute
 ### Step 4: Run the IP Blocker Script
+Admin privileges
 ```bash
 python broker/block_ips.py
 ```
@@ -97,7 +116,7 @@ Use Discover to explore logs
 
 Use Dashboard to visualize attacks
 
-Verify IP blocking
+Verify IP blocking：
 ```bash
 netsh advfirewall firewall show rule name=all 
 ```
